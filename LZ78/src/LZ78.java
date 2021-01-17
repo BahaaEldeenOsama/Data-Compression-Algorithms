@@ -28,7 +28,7 @@ public class LZ78 {
 		Vector<String> Symbol_Beff = new Vector<String>();
 
 		idx_Beff.add(0);
-		Symbol_Beff.add("–-----");
+		Symbol_Beff.add("â€“-----");
 		int cnt = 0;
 
 		String temp = "";
@@ -109,7 +109,7 @@ public class LZ78 {
 		String Data = "", temp = "";
 
 		idx_Buff.add(0);
-		Symbol_Buff.add("–-----");
+		Symbol_Buff.add("â€“-----");
 
 		for (int i = 0; i < idx.size(); ++i) {
 			if (idx.get(i) == 0) {
@@ -144,17 +144,20 @@ public class LZ78 {
 		Scanner in = new Scanner(System.in);
 		int input;
 
-
+		System.out.println();
+		System.out.println(
+				"                                                         <<<<  Algorithm:LZ78  >>>                                ");
 		System.out.println();
 
 		while (true) {
 
 			System.out.println("==========================");
-			System.out.println("To compress --> Enter(1)");
-			System.out.println("To decompress --> Enter(2)");
-			System.out.println("To exit --> Enter(3)");
+			System.out.println("To compression..Enter(1)");
+			System.out.println("To decompression..Enter(2)");
+			System.out.println("To exit..Enter(3)");
 			System.out.println("===========================");
-			System.out.print("Make a choice!!");
+			System.out.print("Make a choice...");
+			input = in.nextInt();
 
 			if (input == 1) {
 				Compression();
