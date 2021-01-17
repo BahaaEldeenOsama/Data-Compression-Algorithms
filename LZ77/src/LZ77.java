@@ -9,18 +9,18 @@ public class LZ77 {
 	/// idx no change.
 	public static void Compression() {
 
-		/// Data input process
+		/// Take Date .
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the Data to compression: ");
+		System.out.print("Enter your Data to compression: ");
 		String data;
 		data = input.nextLine();
 
-		
+		/// related in Dictionary,print them.
 		Vector<Integer> idx = new Vector<Integer>();
 		Vector<Integer> len = new Vector<Integer>();
 		Vector<String> Symbol = new Vector<String>();
 
-		
+		/// related in Memory
 		Vector<Integer> idx_Buff = new Vector<Integer>();
 		Vector<Integer> len_Buff = new Vector<Integer>();
 		Vector<String> Symbol_Buff = new Vector<String>();
@@ -28,11 +28,11 @@ public class LZ77 {
 		int cnt = 0;
 
 		String temp = "";
-		String temp_2 = "";
+		String temp2 = "";
 		String last_substr = "";
 
-		for (int k = 0; k < data.length(); ++k) {
-			temp += data.charAt(k);
+		for (int i = 0; i < data.length(); ++i) {
+			temp += data.charAt(i);
 			if (!temp2.contains(temp)) {
 				++cnt;
 				Symbol_Buff.add(temp);
@@ -49,19 +49,17 @@ public class LZ77 {
 					len.add(temp.length() - 1);
 					idx.add(index);
 				}
-				temp_2 += temp;
+				temp2 += temp;
 				temp = "";
-			}
-			 else 
-			{
+			} else {
 				// index =
 			}
 
 		}
 
-		/* to solve last char problem */
+		/* handling last char */
 
-		last_substr = data.substring(temp_2.length(), data.length());
+		last_substr = data.substring(temp2.length(), data.length());
 		Symbol.add(last_substr.substring(last_substr.length() - 1));
 		len.add(last_substr.length() - 1);
 		idx.add(0);
@@ -71,15 +69,21 @@ public class LZ77 {
 		}
 	}
 
-	
+	// EX.
+	// 2
+	// 4
+	// 0 0 A
+	/// 0 0 B
+	/// 1 3 A
+	/// 2 3 B
 
 	public static void DeCompression() {
 		int n;
-		System.out.print("Enter the number of tags: ");
+		System.out.print("Enter numbers of tags: ");
 		Scanner input = new Scanner(System.in);
 		n = input.nextInt();
 
-		
+		/// related in Dictionary,print them.
 		Vector<Integer> idx = new Vector<Integer>();
 		Vector<Integer> len = new Vector<Integer>();
 		Vector<String> Symbol = new Vector<String>();
@@ -89,7 +93,7 @@ public class LZ77 {
 		int length;
 		int cnt = 0;
 		System.out.println("Enter < Index , Length  , Syembol >");
-		for (int j = 0; j < n; ++j) {
+		for (int i = 0; i < n; ++i) {
 			index = input.nextInt();
 			length = input.nextInt();
 			str = input.nextLine();
@@ -101,20 +105,15 @@ public class LZ77 {
 
 		String Data = "", temp = "";
 
-		for (int i = 0; i < idx.size(); ++i) 
-	     {
+		for (int i = 0; i < idx.size(); ++i) {
 			/// New Symbol.
 			if (idx.get(i) == 0) {
 				temp = Symbol.get(i);
 				Data += temp;
 				temp = "";
-			} 
-			else 
-			{
-  			         {
-
-					for (int k = 0; k < len.get(i); ++k) 
-					{
+			} else {
+				{
+					for (int k = 0; k < len.get(i); ++k) {
 						temp += Symbol.get(i);
 						Data += temp;
 						temp = "";
@@ -123,7 +122,7 @@ public class LZ77 {
 			}
 		}
 
-		System.out.println("The data after DeCompression process is: " + Data);
+		System.out.println("The data after De-Compression: " + Data);
 	}
 
 	public static void main(String[] args) {
@@ -131,14 +130,19 @@ public class LZ77 {
 		Scanner in = new Scanner(System.in);
 		int input;
 
+		System.out.println();
+		System.out.println(
+				"                                                         <<<<  Algorithm:LZ77  >>>                                ");
+		System.out.println();
+
 		while (true) {
 
 			System.out.println("==========================");
-			System.out.println("To compress --> Enter(1)");
-			System.out.println("To decompress --> Enter(2)");
-			System.out.println("To exit --> Enter(3)");
+			System.out.println("To compression..Enter(1)");
+			System.out.println("To decompression..Enter(2)");
+			System.out.println("To exit..Enter(3)");
 			System.out.println("===========================");
-			System.out.print("Make a choice!!");
+			System.out.print("Make a choice...");
 			input = in.nextInt();
 
 			if (input == 1) {
@@ -149,7 +153,7 @@ public class LZ77 {
 				System.out.println("Exit");
 				break;
 			} else {
-				System.out.println("Wrong input !) ");
+				System.out.println("Wrong input ya m3lem :) ");
 			}
 
 		}
