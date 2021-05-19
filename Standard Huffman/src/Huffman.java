@@ -31,7 +31,6 @@ import java.awt.print.*;
     public static void main(String[] args)
     {   	
         System.out.println("                                         <<< Standard Huffman Coding ALgorithm  >>>                        ");
-        System.out.println("                                         <<< Bahaa El-Deen Osama CS-S1 20170078 >>>                        ");
     	System.out.println();
     	
     	System.out.print("Enter your Symbols : ");	
